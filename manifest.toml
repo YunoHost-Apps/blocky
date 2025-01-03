@@ -20,7 +20,7 @@ code = "https://github.com/0xERR0R/blocky"
 [integration]
 yunohost = ">= 12.0.9"
 helpers_version = "2.1"
-architectures = "all"
+architectures = ["amd64", "arm64", "armhf"]
 multi_instance = true
 
 ldap = false
@@ -44,10 +44,15 @@ ram.runtime = "50M"
 
     [resources.sources.main]
     in_subdir = false
-    url = "https://github.com/0xERR0R/blocky/releases/download/v0.24/blocky_v0.24_Linux_x86_64.tar.gz"
-    sha256 = "7e79d4129a62813bd67308f271a159875b38b4715ed7105572d3106ea2750e10"
+    amd64.url = "https://github.com/0xERR0R/blocky/releases/download/v0.24/blocky_v0.24_Linux_x86_64.tar.gz"
+    amd64.sha256 = "7e79d4129a62813bd67308f271a159875b38b4715ed7105572d3106ea2750e10"
+    arm64.url = "https://github.com/0xERR0R/blocky/releases/download/v0.24/blocky_v0.24_Linux_arm64.tar.gz"
+    arm64.sha256 = "186ba9140969bef9a00da69c0b0044efc317bfef9e4463d422c945765ae96f8a"
+    armhf.url = "https://github.com/0xERR0R/blocky/releases/download/v0.24/blocky_v0.24_Linux_armv7.tar.gz"
+    armhf.sha256 = "96651c4dec9afef4171a453302e33d845bdf61985b95bb3aa68f24b3bd5700ff"
 
-    # autoupdate.strategy = "latest_github_tag"
+    autoupdate.strategy = "latest_github_release"
+
 
     [resources.system_user]
 
