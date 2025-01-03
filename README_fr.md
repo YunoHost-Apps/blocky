@@ -18,8 +18,7 @@ Il NE doit PAS être modifié à la main.
 
 ## Vue d’ensemble
 
-Ceci est une fausse description des fonctionalités de l'app
-
+Blocky est un proxy DNS et un bloqueur de publicités pour le réseau local écrit en Go.
 
 **Version incluse :** 0.24~ynh1
 
