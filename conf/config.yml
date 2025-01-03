@@ -1,4 +1,4 @@
-upstream:
+upstreams:
   groups:
     default:
       - 46.182.19.48

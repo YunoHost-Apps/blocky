@@ -11,6 +11,17 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
+# PROCESS OPENING/CLOSING PORTS
+#=================================================
+ynh_script_progression --message="Process opening & closing ports..." --weight=2
+
+# if the port 53 is not open, open it, it's mandatory to use AGH
+if ! yunohost firewall list | grep -q " 53$"; then
+    ynh_print_info --message="Opening port 53..."
+    ynh_exec_warn_less yunohost firewall allow Both 53
+fi
+
+#=================================================
 # APP INITIAL CONFIGURATION
 #=================================================
 ynh_script_progression "Adding $app's configuration files..."
@@ -26,7 +37,7 @@ ynh_config_add_nginx
 
 ynh_config_add_systemd
 
-yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Fast and lightweight DNS proxy" --log="/var/log/$app/$app.log" --needs_exposed_ports "53"
 
 #=================================================
 # START SYSTEMD SERVICE
